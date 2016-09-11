@@ -69,12 +69,12 @@ public class Hero {
 
     @Override
     public String toString() {
-        return "Hero{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", birthday=" + birthday +
-                ", exp=" + exp +
-                ", level=" + level +
+        return "Hero {" +
+                "id =" + id +
+                ", name ='" + name + '\'' +
+                ", birthday =" + birthday +
+                ", exp =" + exp +
+                ", level =" + level +
                 '}';
     }
 }

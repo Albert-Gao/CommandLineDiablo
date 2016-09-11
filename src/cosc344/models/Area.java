@@ -43,10 +43,10 @@ public class Area {
 
     @Override
     public String toString() {
-        return "Area{" +
-                "name='" + name + '\'' +
-                ", size=" + size +
-                ", restricted=" + restricted +
+        return "Area {" +
+                "name ='" + name + '\'' +
+                ", size =" + size +
+                ", restricted =" + restricted +
                 '}';
     }
 }
