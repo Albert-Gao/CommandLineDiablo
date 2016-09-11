@@ -28,6 +28,8 @@ public class Main {
             //step 5 - restore all the data back to normal and close the Scanner
             gm.restore();
 
+            //step 6 - create a json for this report
+
             //Close scanner and database connection
             scanner.close();
             ConnectionManager.closeConnection();
