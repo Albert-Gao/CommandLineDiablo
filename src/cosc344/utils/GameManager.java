@@ -54,8 +54,7 @@ public class GameManager extends BaseClass {
             printBlankSpace();
 
             //load all the heroes from the database
-            ArrayList<Hero> list = new ArrayList<>();
-            list = this.heroService.loadAll();
+            ArrayList<Hero> list = this.heroService.loadAll();
 
             //print all of them so user can pick up one
             groupPrint(list);
@@ -64,17 +63,15 @@ public class GameManager extends BaseClass {
             boolean mark = false;
             while(!mark){
                 //wait for the user to input
-                print("Choose your hero by entering his ID!");
+                print("Choose your hero by entering his ID:");
                 heroid = scanner.nextInt();
-                mark = findID(list,heroid) ?true:false;
+                mark = findID(list,heroid) ? true : false;
             }
-                //load hero with this id
-                this.hero = null;
-                this.hero = this.heroService.getObject(heroid);
-                print(this.hero.toString());
 
-                
-            
+            //load hero with this id
+            this.hero = this.heroService.getObject(heroid);
+            print(this.hero.toString());
+
             //display the hero
             SceneGenerator.showHero();
 
@@ -97,15 +94,19 @@ public class GameManager extends BaseClass {
             printBlankSpace();
 
             //load all the available areas
-            ArrayList<Area> list;
-            list = this.areaService.loadAll();
+            ArrayList<Area> list = this.areaService.loadAll();
 
             //print all of them so user can pick up one
             groupPrint(list);
 
-            //wait for the user to input
-            print("Choose your area!");
-            String areaname = scanner.next();
+            String areaname="";
+            boolean mark = false;
+            while(!mark){
+                //wait for the user to input
+                print("Choose your area by its name:");
+                areaname = scanner.next();
+                mark = findAreaName(list,areaname) ? true : false;
+            }
 
             //load the area which the user choose
             this.area = this.areaService.getObject(areaname);
@@ -119,6 +120,14 @@ public class GameManager extends BaseClass {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private boolean findAreaName(ArrayList<Area> list, String name){
+        for ( Area a:list ){
+            if ( a.getName() == name )
+                return true;
+        }
+        return false;
     }
 
     //step 3 - battle (kill one monster for completing one quest)
