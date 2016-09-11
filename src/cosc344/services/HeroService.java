@@ -4,7 +4,6 @@ import cosc344.models.Hero;
 import cosc344.utils.NotFoundException;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.List;
 
 public class HeroService {
     private Connection conn;
@@ -261,9 +260,9 @@ public class HeroService {
      * @param valueObject  This parameter contains the class instance where search will be based.
      *                     Primary-key field should not be set.
      */
-    public List searchMatching(Hero valueObject) throws SQLException {
+    public ArrayList<Hero> searchMatching(Hero valueObject) throws SQLException {
 
-        List searchResults;
+        ArrayList<Hero> searchResults;
 
         boolean first = true;
         StringBuffer sql = new StringBuffer("SELECT * FROM hero WHERE 1=1 ");
@@ -293,7 +292,7 @@ public class HeroService {
         // Prevent accidential full table results.
         // Use loadAll if all rows must be returned.
         if (first)
-            searchResults = new ArrayList();
+            searchResults = new ArrayList<Hero>();
         else
             searchResults = listQuery(conn.prepareStatement(sql.toString()));
 

@@ -305,7 +305,7 @@ public class QuestService {
         // Prevent accidential full table results.
         // Use loadAll if all rows must be returned.
         if (first)
-            searchResults = new ArrayList();
+            searchResults = new ArrayList<Quest>();
         else
             searchResults = listQuery(conn.prepareStatement(sql.toString()));
 
@@ -375,7 +375,7 @@ public class QuestService {
      */
     protected ArrayList<Quest> listQuery(PreparedStatement stmt) throws SQLException {
 
-        ArrayList<Quest> searchResults = new ArrayList();
+        ArrayList<Quest> searchResults = new ArrayList<Quest>();
         ResultSet result = null;
 
         try {

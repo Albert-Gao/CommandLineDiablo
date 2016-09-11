@@ -285,9 +285,9 @@ public class ConsumableService {
      * @param valueObject  This parameter contains the class instance where search will be based.
      *                     Primary-key field should not be set.
      */
-    public List searchMatching(Consumable valueObject) throws SQLException {
+    public ArrayList<Consumable> searchMatching(Consumable valueObject) throws SQLException {
 
-        List searchResults;
+        ArrayList<Consumable> searchResults;
 
         boolean first = true;
         StringBuffer sql = new StringBuffer("SELECT * FROM consumable WHERE 1=1 ");
@@ -313,7 +313,7 @@ public class ConsumableService {
         // Prevent accidential full table results.
         // Use loadAll if all rows must be returned.
         if (first)
-            searchResults = new ArrayList();
+            searchResults = new ArrayList<Consumable>();
         else
             searchResults = listQuery(conn.prepareStatement(sql.toString()));
 

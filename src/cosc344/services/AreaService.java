@@ -296,7 +296,7 @@ public class AreaService {
         // Prevent accidential full table results.
         // Use loadAll if all rows must be returned.
         if (first)
-            searchResults = new ArrayList();
+            searchResults = new ArrayList<Area>();
         else
             searchResults = listQuery(conn.prepareStatement(sql.toString()));
 

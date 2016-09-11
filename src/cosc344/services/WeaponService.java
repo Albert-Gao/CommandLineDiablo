@@ -333,7 +333,7 @@ public class WeaponService {
         // Prevent accidential full table results.
         // Use loadAll if all rows must be returned.
         if (first)
-            searchResults = new ArrayList();
+            searchResults = new ArrayList<Weapon>();
         else
             searchResults = listQuery(conn.prepareStatement(sql.toString()));
 

@@ -257,9 +257,9 @@ public class BackpackService {
      * @param valueObject  This parameter contains the class instance where search will be based.
      *                     Primary-key field should not be set.
      */
-    public List searchMatching(Backpack valueObject) throws SQLException {
+    public ArrayList<Backpack> searchMatching(Backpack valueObject) throws SQLException {
 
-        List searchResults;
+        ArrayList<Backpack> searchResults;
 
         boolean first = true;
         StringBuffer sql = new StringBuffer("SELECT * FROM backpack WHERE 1=1 ");
@@ -290,7 +290,7 @@ public class BackpackService {
         // Prevent accidential full table results.
         // Use loadAll if all rows must be returned.
         if (first)
-            searchResults = new ArrayList();
+            searchResults = new ArrayList<Backpack>();
         else
             searchResults = listQuery(conn.prepareStatement(sql.toString()));
 
