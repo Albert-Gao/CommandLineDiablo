@@ -10,8 +10,8 @@ public class BaseClass {
         System.out.println(text);
     }
 
-    protected static void print(int text) {
-        System.out.println(text);
+    protected static void print(int number) {
+        System.out.println(number);
     }
 
     /**
@@ -25,8 +25,6 @@ public class BaseClass {
     }
 
     protected static <T> void groupPrint( ArrayList<T> list ){
-        for (T item:list){
-            item.toString();
-        }
+        list.forEach(System.out::println);
     }
 }
