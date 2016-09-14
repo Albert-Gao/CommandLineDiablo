@@ -10,6 +10,11 @@ public class BaseClass {
         System.out.println(text);
     }
 
+    protected static void print(boolean bol){
+        String text = bol?"true":"false";
+        print(text);
+    }
+    
     protected static void print(int number) {
         System.out.println(number);
     }

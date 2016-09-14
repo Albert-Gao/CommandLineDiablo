@@ -63,6 +63,7 @@ public class GameManager extends BaseClass {
             boolean mark = false;
             while(!mark){
                 //wait for the user to input
+                print("");
                 print("Choose your hero by entering his ID:");
                 heroid = scanner.nextInt();
                 mark = findID(list,heroid) ? true : false;
@@ -70,7 +71,13 @@ public class GameManager extends BaseClass {
 
             //load hero with this id
             this.hero = this.heroService.getObject(heroid);
-            print(this.hero.toString());
+
+            //print info
+            print("");
+            print("===================");
+            print("= You have chosen =");
+            print("=    Hero No."+Integer.toString(heroid)+"    =");
+            print("===================");
 
             //display the hero
             SceneGenerator.showHero();
@@ -85,6 +92,7 @@ public class GameManager extends BaseClass {
             if (h.getId()==id)
                 return true;
         }
+        print("Wrong id, please input agagin!");
         return false;
     }
 
@@ -102,9 +110,10 @@ public class GameManager extends BaseClass {
             String areaname="";
             boolean mark = false;
             while(!mark){
+                print("");
                 //wait for the user to input
                 print("Choose your area by its name:");
-                areaname = scanner.next();
+                areaname = scanner.nextLine();
                 mark = findAreaName(list,areaname) ? true : false;
             }
 
@@ -124,9 +133,11 @@ public class GameManager extends BaseClass {
 
     private boolean findAreaName(ArrayList<Area> list, String name){
         for ( Area a:list ){
-            if ( a.getName() == name )
+            if ( a.getName() == name ){
                 return true;
+            }
         }
+        print("No area found, input again!");
         return false;
     }
 

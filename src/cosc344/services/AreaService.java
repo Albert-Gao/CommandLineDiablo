@@ -46,7 +46,7 @@ public class AreaService {
             throw new NotFoundException("Can not select without Primary-Key!");
         }
 
-        String sql = "SELECT * FROM area WHERE (aname = ? ) ";
+        String sql = "SELECT * FROM area WHERE (aname = ? )";
         PreparedStatement stmt = null;
 
         try {

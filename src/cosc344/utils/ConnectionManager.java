@@ -38,7 +38,7 @@ public class ConnectionManager {
      * AND MAKE SURE NOT ADD THIS FILE TO GIT!!!
      */
     public static void readUserAndPassword(ArrayList<String> pws){
-        Path path = Paths.get("src/cosc344/utils/password.txt");
+        Path path = Paths.get("cosc344/utils/password.txt");
         try {
             Files.lines(path).forEach((x)->{
                 pws.add(x);
