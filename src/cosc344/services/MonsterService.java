@@ -62,9 +62,8 @@ public class MonsterService {
 
     public ArrayList<Monster> loadAllByAreaName(String areaname) throws SQLException {
 
-        String sql = "SELECT * FROM monster JOIN MHP ON monster.mlevel=MHP.mlevel WHERE (aname = ? ) ORDER BY mname ASC ";
-        PreparedStatement stmt = null;
-        stmt = conn.prepareStatement(sql);
+        String sql = "SELECT * FROM monster JOIN MHP ON (monster.mlevel=MHP.mlevel) WHERE (aname = ? ) ORDER BY mname ASC ";
+        PreparedStatement stmt = conn.prepareStatement(sql);
         stmt.setString(1, areaname);
         ArrayList<Monster> searchResults = listQuery( stmt);
 
