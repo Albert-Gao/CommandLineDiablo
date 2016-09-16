@@ -19,16 +19,19 @@ public class Main {
             //step 2 - choose an area (all quests in the area will be assigned to the Hero)
             gm.chooseArea();
 
-            //step 3 - battle (kill one monster for completing one quest)
+            //step 3 - pick a weapon according to the hero you choose
+            gm.pickWeapon();
+            
+            //step 4 - battle (kill one monster for completing one quest)
             gm.battle();
 
-            //step 4 - display the result (trigger: die or choose 'quit')
+            //step 5 - display the result (trigger: die or choose 'quit')
             gm.displayReport();
 
-            //step 5 - restore all the data back to normal and close the Scanner
+            //step 6 - restore all the data back to normal and close the Scanner
             gm.restore();
 
-            //step 6 - create a json for this report
+            //step 7 - create a json for this report
 
             //Close scanner and database connection
             scanner.close();

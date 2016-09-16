@@ -81,7 +81,29 @@ public class WeaponService {
         return searchResults;
     }
 
+    public ArrayList<Weapon> loadAllByHeroId(int heroid) throws SQLException {
 
+        String sql = "SELECT * FROM weapon w JOIN WVALUE wv ON " +
+                "(w.rarity=wv.rarity AND " +
+                "w.pdamage=wv.damageP AND " +
+                "w.mdamage=wv.damageM) " +
+                "WHERE (hpid = ?)" +
+                " ORDER BY wid ASC";
+        PreparedStatement stmt = null;
+        ArrayList<Weapon> searchResults = new ArrayList<Weapon>();
+        
+        try {
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, heroid);
+            searchResults = listQuery(stmt);
+        } finally {
+            if (stmt != null)
+                stmt.close();
+        }
+        return searchResults;
+    }
+    
+    
 
     /**
      * create-method. This will create new row in database according to supplied
