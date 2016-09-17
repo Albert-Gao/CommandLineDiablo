@@ -353,13 +353,6 @@ public class GameManager extends BaseClass {
     	return count;
     }
     
-    //step 6 - restore all the data back to normal and close the Scanner
-    public void restore(){
-        //the reason we need this is that every game will mess up the database
-        //So it should be better that we restore all the data back via store procedure
-        //So next time we could enjoy a new game
-    }
-    
     private void printWeapon(Weapon weapon){
     	if (weapon.getName().contains("Sword") || weapon.getName().contains("Blade")){
     		SceneGenerator.showSword();

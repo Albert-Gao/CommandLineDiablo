@@ -28,9 +28,6 @@ public class Main {
             //step 5 - display the result (trigger: die or choose 'quit')
             gm.displayReport();
 
-            //step 6 - restore all the data back to normal and close the Scanner
-            gm.restore();
-
             //step 7 - create a json for this report
 
             //Close scanner and database connection
