@@ -41,10 +41,7 @@ public class WeaponService {
      */
     public void load(Weapon valueObject) throws NotFoundException, SQLException {
 
-        String sql = "SELECT * FROM weapon w JOIN WVALUE wv ON " +
-                "(w.rarity=wv.rarity AND" +
-                "w.pdamage=wv.damageP AND" +
-                "w.mdamage=wv.damageM) " +
+        String sql = "SELECT * FROM weapon " +
                 "WHERE (wid = ? ) ";
         PreparedStatement stmt = null;
 
@@ -71,10 +68,7 @@ public class WeaponService {
      */
     public ArrayList<Weapon> loadAll() throws SQLException {
 
-        String sql = "SELECT * FROM weapon w JOIN WVALUE wv ON " +
-                "(w.rarity=wv.rarity AND" +
-                "w.pdamage=wv.damageP AND" +
-                "w.mdamage=wv.damageM)" +
+        String sql = "SELECT * FROM weapon" +
                 " ORDER BY wid ASC";
         ArrayList<Weapon> searchResults = listQuery(conn.prepareStatement(sql));
 
@@ -83,23 +77,14 @@ public class WeaponService {
 
     public ArrayList<Weapon> loadAllByHeroId(int heroid) throws SQLException {
 
-        String sql = "SELECT * FROM weapon w JOIN WVALUE wv ON " +
-                "(w.rarity=wv.rarity AND " +
-                "w.pdamage=wv.damageP AND " +
-                "w.mdamage=wv.damageM) " +
-                "WHERE (hpid = ?)" +
-                " ORDER BY wid ASC";
+        String sql = "SELECT * FROM weapon " +
+                "WHERE (hpid = ?) " +
+                "ORDER BY wid ASC";
         PreparedStatement stmt = null;
-        ArrayList<Weapon> searchResults = new ArrayList<Weapon>();
+        stmt = conn.prepareStatement(sql);
+        stmt.setInt(1, heroid);
+        ArrayList<Weapon> searchResults = listQuery(stmt);
         
-        try {
-            stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, heroid);
-            searchResults = listQuery(stmt);
-        } finally {
-            if (stmt != null)
-                stmt.close();
-        }
         return searchResults;
     }
     
@@ -406,7 +391,7 @@ public class WeaponService {
                 valueObject.setHeroid(result.getInt("hpid"));
                 valueObject.setBackpackname(result.getString("bname"));
                 valueObject.setQuestname(result.getString("qname"));
-                valueObject.setValue(result.getInt("VALUE"));
+                valueObject.setValue(this.generateValue());
 
             } else {
                 System.out.println("Weapon Object Not Found!");
@@ -447,7 +432,7 @@ public class WeaponService {
                 temp.setHeroid(result.getInt("hpid"));
                 temp.setBackpackname(result.getString("bname"));
                 temp.setQuestname(result.getString("qname"));
-                temp.setValue(result.getInt("VALUE"));
+                temp.setValue(this.generateValue());
 
                 searchResults.add(temp);
             }
@@ -460,5 +445,9 @@ public class WeaponService {
         }
 
         return searchResults;
+    }
+    
+    private int generateValue(){
+    	return (new java.util.Random()).nextInt((100 - 1) + 1) + 1;
     }
 }
