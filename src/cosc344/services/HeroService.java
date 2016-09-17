@@ -40,8 +40,10 @@ public class HeroService {
      */
     public void load(Hero valueObject) throws NotFoundException, SQLException {
 
-        String sql = "SELECT hero.pid,hero.hname,hero.bdate,hero.exp,HLEVEL.hlevel FROM hero JOIN HLEVEL ON hero.exp = HLEVEL.hexp WHERE (pid = ? ) ";
-        PreparedStatement stmt = null;
+        //String sql = "SELECT hero.pid,hero.hname,hero.bdate,hero.exp,HLEVEL.hlevel FROM hero JOIN HLEVEL ON hero.exp = HLEVEL.hexp WHERE (pid = ? ) ";
+    	String sql = "SELECT * FROM hero WHERE (pid = ? ) ";
+        
+    	PreparedStatement stmt = null;
 
         try {
             stmt = conn.prepareStatement(sql);
@@ -65,7 +67,7 @@ public class HeroService {
      *
      */
     public ArrayList<Hero> loadAll() throws SQLException {
-        String sql = "SELECT hero.pid,hero.hname,hero.bdate,hero.exp,HLEVEL.hlevel FROM hero JOIN HLEVEL ON hero.exp = HLEVEL.hexp ORDER BY pid ASC ";
+        String sql = "SELECT * FROM hero ORDER BY pid ASC ";
         ArrayList<Hero> searchResults = listQuery(conn.prepareStatement(sql));
         return searchResults;
     }
@@ -200,7 +202,7 @@ public class HeroService {
      * restored by calling save. Restoring can only be done using create method but if database
      * is using automatic surrogate-keys, the resulting object will have different primary-key
      * than what it was in the deleted object. (Note, the implementation of this method should
-     * be different with different DB backends.)
+     * be different with different DB back-ends.)
      *
      */
     public void deleteAll() throws SQLException {
@@ -220,7 +222,7 @@ public class HeroService {
 
     /**
      * coutAll-method. This method will return the number of all rows from table that matches
-     * this Dao. The implementation will simply execute "select count(primarykey) from table".
+     * this Dao. The implementation will simply execute "select count(primary key) from table".
      * If table is empty, the return value is 0. This method should be used before calling
      * loadAll, to make sure table has not too many rows.
      *
@@ -315,14 +317,12 @@ public class HeroService {
         return result;
     }
 
-
-
     /**
      * databaseQuery-method. This method is a helper method for internal use. It will execute
-     * all database queries that will return only one row. The resultset will be converted
+     * all database queries that will return only one row. The result set will be converted
      * to valueObject. If no rows were found, NotFoundException will be thrown.
      *
-     * @param stmt         This parameter contains the SQL statement to be excuted.
+     * @param stmt         This parameter contains the SQL statement to be executed.
      * @param valueObject  Class-instance where resulting data will be stored.
      */
     protected void singleQuery(PreparedStatement stmt, Hero valueObject)
@@ -339,7 +339,7 @@ public class HeroService {
                 valueObject.setName(result.getString("hname"));
                 valueObject.setBirthday(result.getDate("bdate"));
                 valueObject.setExp(result.getInt("exp"));
-                valueObject.setLevel(result.getInt("hlevel"));
+                valueObject.setLevel(this.expToLvl(result.getInt("exp")));
 
             } else {
                 System.out.println("Hero Object Not Found!");
@@ -376,10 +376,9 @@ public class HeroService {
                 temp.setName(result.getString("hname"));
                 temp.setBirthday(result.getDate("bdate"));
                 temp.setExp(result.getInt("exp"));
-                temp.setLevel(result.getInt("hlevel"));
+                temp.setLevel(this.expToLvl(result.getInt("exp")));
 
                 searchResults.add(temp);
-                System.out.println(temp.toString());
             }
 
         } finally {
@@ -390,6 +389,10 @@ public class HeroService {
         }
 
         return searchResults;
+    }
+    
+    public int expToLvl(int exp){
+    	return Math.floorDiv(exp, 50);
     }
 
 }
