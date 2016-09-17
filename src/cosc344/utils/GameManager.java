@@ -217,7 +217,7 @@ public class GameManager extends BaseClass {
     	int monsterId = 0;
     	String action = "";
         //battle until user press q;
-        while (!isMonsterAllDead(monsterId) || action.equals("q")) {
+        while (!isMonsterAllDead(monsterId)) {
         	int currentMonsterHP = this.monsters.get(monsterId).getHitpoints();
         	printBlankSpace();
         	print("**********************************");
@@ -250,6 +250,9 @@ public class GameManager extends BaseClass {
                     print("-       q : quit                    -");
                     print("-------------------------------------");
                     break;
+            }
+            if (action.equals("q")){
+            	break;
             }
             if ( isMonsterDead(monsterId) ){ //check if current monster is dead
             	printBlankSpace();
