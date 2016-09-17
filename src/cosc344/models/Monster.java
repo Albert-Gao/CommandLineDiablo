@@ -42,7 +42,11 @@ public class Monster {
     }
 
     public void setHitpoints(int hitpoints) {
-        this.hitpoints = hitpoints;
+    	if ( hitpoints < 0 ){
+    		this.hitpoints = 0;	
+    	} else {
+    		this.hitpoints = hitpoints;
+    	}
     }
 
     public String getAreaname() {
