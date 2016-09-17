@@ -45,7 +45,7 @@ public class MonsterService {
             throw new NotFoundException("Can not select without Primary-Key!");
         }
 
-        String sql = "SELECT * FROM monster JOIN MHP ON monster.mlevel=MHP.mlevel WHERE (mname = ? ) ";
+        String sql = "SELECT * FROM monster WHERE (mname = ? ) ";
         PreparedStatement stmt = null;
 
         try {
@@ -62,7 +62,7 @@ public class MonsterService {
 
     public ArrayList<Monster> loadAllByAreaName(String areaname) throws SQLException {
 
-        String sql = "SELECT * FROM monster JOIN MHP ON (monster.mlevel=MHP.mlevel) WHERE (aname = ? ) ORDER BY mname ASC ";
+        String sql = "SELECT * FROM monster WHERE (aname = ? ) ORDER BY mname ASC ";
         PreparedStatement stmt = conn.prepareStatement(sql);
         stmt.setString(1, areaname);
         ArrayList<Monster> searchResults = listQuery( stmt);
@@ -80,13 +80,49 @@ public class MonsterService {
      */
     public ArrayList<Monster> loadAll() throws SQLException {
 
-        String sql = "SELECT * FROM monster JOIN MHP ON monster.mlevel=MHP.mlevel ORDER BY mname ASC ";
+        String sql = "SELECT * FROM monster ORDER BY mname ASC ";
         ArrayList<Monster> searchResults = listQuery( conn.prepareStatement(sql));
 
         return searchResults;
     }
 
+    /**
+     * LoadAll-method. This will read all contents from database table and
+     * build a List containing valueObjects. Please note, that this method
+     * will consume huge amounts of resources if table has lot's of rows.
+     * This should only be used when target tables have only small amounts
+     * of data.
+     *
+     */
+    public int loadAllByGroupByAreaName(String areaname) throws NotFoundException, SQLException {
 
+        String sql = "SELECT aname, count(aname) AS num FROM monster WHERE (aname = ?) GROUP BY aname";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setString(1, areaname);
+        //ArrayList<Monster> searchResults = listQuery( conn.prepareStatement(sql));
+        int count = 0;
+        
+        ResultSet result = null;
+
+        try {
+            result = stmt.executeQuery();
+
+            if (result.next()) {
+            	count = result.getInt("num");
+
+            } else {
+                System.out.println("No this area!");
+                throw new NotFoundException("Haven't found this area!");
+            }
+        } finally {
+            if (result != null)
+                result.close();
+            if (stmt != null)
+                stmt.close();
+        }
+        
+        return count;
+    }
 
     /**
      * create-method. This will create new row in database according to supplied
@@ -331,10 +367,10 @@ public class MonsterService {
 
     /**
      * databaseQuery-method. This method is a helper method for internal use. It will execute
-     * all database queries that will return only one row. The resultset will be converted
+     * all database queries that will return only one row. The result set will be converted
      * to valueObject. If no rows were found, NotFoundException will be thrown.
      *
-     * @param stmt         This parameter contains the SQL statement to be excuted.
+     * @param stmt         This parameter contains the SQL statement to be executed.
      * @param valueObject  Class-instance where resulting data will be stored.
      */
     protected void singleQuery(PreparedStatement stmt, Monster valueObject)
@@ -350,7 +386,7 @@ public class MonsterService {
                 valueObject.setName(result.getString("mname"));
                 valueObject.setLevel(result.getInt("mlevel"));
                 valueObject.setAreaname(result.getString("aname"));
-                valueObject.setHitpoints(result.getInt("mhp"));
+                valueObject.setHitpoints(this.levelToHitpoints(result.getInt("mlevel")));
 
             } else {
                 System.out.println("Monster Object Not Found!");
@@ -386,7 +422,7 @@ public class MonsterService {
                 temp.setName(result.getString("mname"));
                 temp.setLevel(result.getInt("mlevel"));
                 temp.setAreaname(result.getString("aname"));
-                temp.setHitpoints(result.getInt("mhp"));
+                temp.setHitpoints(this.levelToHitpoints(result.getInt("mlevel")));
 
                 searchResults.add(temp);
             }
@@ -401,5 +437,7 @@ public class MonsterService {
         return searchResults;
     }
 
-
+    private int levelToHitpoints(int level){
+    	return level * 5;
+    }
 }
