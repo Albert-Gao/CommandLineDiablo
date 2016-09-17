@@ -73,7 +73,7 @@ public class GameManager extends BaseClass {
                 	heroid = scanner.nextInt();
                 	mark = findID(list,heroid) ? true : false;
                 }catch(Exception e){
-                	print("Please enter ID!");
+                	print("Please enter ID, it's a number!");
                 }
                 scanner.nextLine(); //consume the new line
             }
@@ -122,9 +122,13 @@ public class GameManager extends BaseClass {
                 print("");
                 //wait for the user to input
                 print("Choose your weapon by its Id:");
-                weaponId = scanner.nextInt();
-                print("Input is "+weaponId);
-                mark = findWeaponName(list,weaponId) ? true : false;
+                try{
+                	weaponId = scanner.nextInt();
+                    mark = findWeaponName(list,weaponId) ? true : false;
+                }catch(Exception e){
+                	print("Please enter ID, it's a number!");
+                }
+                
                 scanner.nextLine(); //consume the new line
             }
 
