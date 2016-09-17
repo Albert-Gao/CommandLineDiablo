@@ -16,12 +16,12 @@ public class Main {
             //step 1 - display the menu (pickup a hero)
             gm.displayMenu();
 
-            //step 2 - choose an area (all quests in the area will be assigned to the Hero)
-            gm.chooseArea();
-
-            //step 3 - pick a weapon according to the hero you choose
+            //step 2 - pick a weapon according to the hero you choose
             gm.pickWeapon();
             
+            //step 3 - choose an area (all quests in the area will be assigned to the Hero)
+            gm.chooseArea();
+
             //step 4 - battle (kill one monster for completing one quest)
             gm.battle();
 
