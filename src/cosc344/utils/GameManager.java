@@ -128,7 +128,6 @@ public class GameManager extends BaseClass {
                 }catch(Exception e){
                 	print("Please enter ID, it's a number!");
                 }
-                
                 scanner.nextLine(); //consume the new line
             }
 
@@ -170,8 +169,13 @@ public class GameManager extends BaseClass {
                 print("");
                 //wait for the user to input
                 print("Choose your area by its name:");
-                areaname = scanner.nextLine();
-                mark = findAreaName(list,areaname) ? true : false;
+                try{
+                	areaname = scanner.nextLine();
+                    mark = findAreaName(list,areaname) ? true : false;
+                }catch(Exception e){
+                	print("Please enter name, it's a string!");
+                	scanner.nextLine();
+                }
             }
 
             //load the area which the user choose
