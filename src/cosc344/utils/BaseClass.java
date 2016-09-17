@@ -30,6 +30,6 @@ public class BaseClass {
     }
 
     protected static <T> void groupPrint( ArrayList<T> list ){
-        list.forEach(System.out::println);
+        list.forEach((x)->{System.out.println(x.toString());});
     }
 }
