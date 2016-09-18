@@ -32,8 +32,8 @@ public class GameManager extends BaseClass {
     
     /**
      * GameManager constructor with 2 parameters
-     * @param scanner - scanner object to help with user input
-     * @param conn - connection object to help with database connection
+     * @param Scanner scanner - scanner object to help with user input
+     * @param Connection conn - connection object to help with database connection
      */
     public GameManager(Scanner scanner, Connection conn) {
         this.scanner = scanner;
@@ -105,9 +105,9 @@ public class GameManager extends BaseClass {
     
     /**
      * private boolean method searches the hero list to find the specified id
-     * @param list - list of hero objects to search through
-     * @param id - id of the hero to search for in the list
-     * @return true if hero id is found in the list, false if not
+     * @param ArrayList<Hero> list - list of hero objects to search through
+     * @param int id - id of the hero to search for in the list
+     * @return boolean true if hero id is found in the list, false if not
      */
     private boolean findID(ArrayList<Hero> list, int id){
         for (Hero h:list){
@@ -156,9 +156,9 @@ public class GameManager extends BaseClass {
     
     /**
      * private boolean method searches the weapon list for the requested weapon id
-     * @param list - list of weapon objects to search through
-     * @param id - id of the weapon to search in the list
-     * @return true if weapon id is in the list, false if it is not
+     * @param ArrayList<Weapon> list - list of weapon objects to search through
+     * @param int id - id of the weapon to search in the list
+     * @return boolean true if weapon id is in the list, false if it is not
      */
     private boolean findWeaponName(ArrayList<Weapon> list, int id){
         for ( Weapon a:list ){
@@ -211,9 +211,9 @@ public class GameManager extends BaseClass {
     
     /**
      * Private method returns true or false if areaname is in the list or not
-     * @param list - list of the current areanames
-     * @param name - name of the area to search for in the list
-     * @return true if areaname is found false if not
+     * @param ArrayList<Area> list - list of the current areanames
+     * @param String name - name of the area to search for in the list
+     * @return boolean true if areaname is found false if not
      */
     private boolean findAreaName(ArrayList<Area> list, String name){
         for ( Area a:list ){
@@ -295,8 +295,8 @@ public class GameManager extends BaseClass {
     
     /**
      * private method checks if monster is dead
-     * @param id of the monster to be checked
-     * @return true if monster's hitpoints is 0 else false
+     * @param int id of the monster to be checked
+     * @return boolean true if monster's hitpoints is 0 else false
      */
     private boolean isMonsterDead(int id){
      if (this.monsters.get(id).getHitpoints()==0){
@@ -307,8 +307,8 @@ public class GameManager extends BaseClass {
     
     /**
      * private method checks if monsters are all dead in the area
-     * @param id - value to check if all the monsters are dead, usually the value is 0
-     * @return true if all monsters are dead, false if the size of the list of monsters is not 0
+     * @param int id - value to check if all the monsters are dead, usually the value is 0
+     * @return boolean true if all monsters are dead, false if the size of the list of monsters is not 0
      */
     private boolean isMonsterAllDead(int id){
      if ( id == this.monsters.size() ){
@@ -324,8 +324,8 @@ public class GameManager extends BaseClass {
     /**
      * private void method is responsible for the fight with the monster
      * monster fights with either physical or magical damage depending on it's damage type
-     * @param monsterId - id of the monster to fight with
-     * @param isPhysical - true if monster does physical damage, false if it does magical
+     * @param int monsterId - id of the monster to fight with
+     * @param boolean isPhysical - true if monster does physical damage, false if it does magical
      */
     private void fightMonster(int monsterId, boolean isPhysical){
      int currentMonsterHP = this.monsters.get(monsterId).getHitpoints();
@@ -340,7 +340,7 @@ public class GameManager extends BaseClass {
     
     /**
      * private String outputs text description of the damage depending on how much damage is done
-     * @param dmg the damage value to determine what message to display
+     * @param int dmg the damage value to determine what message to display
      */
     private String damageToText(int dmg){
      if (dmg > 65){
@@ -390,7 +390,7 @@ public class GameManager extends BaseClass {
     /**
      * private method prints the dead monsters names 
      * and returns the count of dead monsters in the list
-     * @return count - number of dead monsters in the monsters list
+     * @return int count - number of dead monsters in the monsters list
      */
     private int printDeadMonster(){
      int count = 0;
@@ -406,7 +406,7 @@ public class GameManager extends BaseClass {
     
     /**
      * private method prints a visual representation of the weapons
-     * @param weapon - the weapon object to visually represent
+     * @param Weapon weapon - the weapon object to visually represent
      */
     private void printWeapon(Weapon weapon){
      if (weapon.getName().contains("Sword") || weapon.getName().contains("Blade")){

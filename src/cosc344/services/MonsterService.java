@@ -11,7 +11,7 @@ public class MonsterService {
     
     /**
      * 1-arg MonsterService constructor
-     * @param connection to help with the database
+     * @param Connection connection to help with the database
      */
     public MonsterService(Connection connection) throws SQLException {
         this.conn = connection;
@@ -22,8 +22,7 @@ public class MonsterService {
      * for the real load-method which accepts the valueObject as a parameter. Returned
      * valueObject will be created using the createValueObject() method.
      * 
-     * @param name - the name of the Monster to create a valueObject with
-     * @return valueObject - the created class instance to be passed to the real load method
+     * @return Monster valueObject
      */
     public Monster getObject(String name) throws NotFoundException, SQLException {
 
@@ -69,8 +68,8 @@ public class MonsterService {
     
     /**
      * Loads all monsters by areaname
-     * @param areaname that the monsters will be loaded from
-     * @return searchResults of monster objects related to the query.
+     * @param String areaname that the monsters will be loaded from
+     * @return ArrayList<Monster> of monster objects related to the query.
      */
     public ArrayList<Monster> loadAllByAreaName(String areaname) throws SQLException {
 
@@ -88,7 +87,7 @@ public class MonsterService {
      * will consume huge amounts of resources if table has lot's of rows.
      * This should only be used when target tables have only small amounts
      * of data.
-     * @return searchResults - List of Monster Objects related to the query.
+     * @return ArrayList<Monster> of Monster Objects related to the query.
      */
     public ArrayList<Monster> loadAll() throws SQLException {
 
@@ -105,7 +104,7 @@ public class MonsterService {
      * This should only be used when target tables have only small amounts
      * of data.
      *
-     * @return count of rows affected by the query.
+     * @return int count of rows affected by the query.
      */
     public int loadAllByGroupByAreaName(String areaname) throws NotFoundException, SQLException {
 
@@ -290,7 +289,7 @@ public class MonsterService {
      * If table is empty, the return value is 0. This method should be used before calling
      * loadAll, to make sure table has not too many rows.
      *
-     * @return allRows - The count of rows affected by the query.
+     * @return int count of rows affected by the query.
      */
     public int countAll() throws SQLException {
 
@@ -326,7 +325,7 @@ public class MonsterService {
      *
      * @param valueObject  This parameter contains the class instance where search will be based.
      *                     Primary-key field should not be set.
-     * @return searchResults of Monster objects related to the query.
+     * @return ArrayList<Monster> of Monster objects related to the query.
      */
     public ArrayList<Monster> searchMatching(Monster valueObject) throws SQLException {
 
@@ -370,7 +369,7 @@ public class MonsterService {
      * This method will also make sure that if cache is used, it will reset when data changes.
      *
      * @param stmt         This parameter contains the SQL statement to be excuted.
-     * @return result      The number of rows affected by the query.
+     * @return int         The number of rows affected by the query.
      */
     protected int databaseUpdate(PreparedStatement stmt) throws SQLException {
 
@@ -423,7 +422,7 @@ public class MonsterService {
      * to the List of valueObjects. If no rows were found, an empty List will be returned.
      *
      * @param stmt         This parameter contains the SQL statement to be excuted.
-     * @return searchResults of Monster objects related to the query.
+     * @return ArrayList<Monster> of Monster objects related to the query.
      */
     protected ArrayList<Monster> listQuery(PreparedStatement stmt) throws SQLException {
 

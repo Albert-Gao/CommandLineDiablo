@@ -12,7 +12,7 @@ public class BackpackService {
 
     /**
      * 1-arg BackpackService constructor
-     * @param connection object to help with the database
+     * @param Connection connection object to help with the database
      */
     public BackpackService(Connection connection) throws SQLException {
         this.conn = connection;
@@ -59,7 +59,7 @@ public class BackpackService {
      * This should only be used when target tables have only small amounts
      * of data.
      * 
-     * @return searchResults of the SQL query
+     * @return ArrayList<Backpack> searchResults of the SQL query
      */
     public ArrayList<Backpack> loadAll() throws SQLException {
 
@@ -226,7 +226,7 @@ public class BackpackService {
      * If table is empty, the return value is 0. This method should be used before calling
      * loadAll, to make sure table has not too many rows.
      *
-     * @return allRows - the number of rows in the table
+     * @return int allRows - the number of rows in the table
      */
     public int countAll() throws SQLException {
 
@@ -262,7 +262,7 @@ public class BackpackService {
      *
      * @param valueObject  This parameter contains the class instance where search will be based.
      *                     Primary-key field should not be set.
-     * @return searchResults  O-N objects in a list matching the criterias
+     * @return ArrayList<Backpack> searchResults  O-N objects in a list matching the criterias
      */
     public ArrayList<Backpack> searchMatching(Backpack valueObject) throws SQLException {
 
@@ -312,7 +312,7 @@ public class BackpackService {
      * This method will also make sure that if cache is used, it will reset when data changes.
      *
      * @param stmt         This parameter contains the SQL statement to be excuted.
-     * @return result      Number of rows that were affected
+     * @return int result  Number of rows that were affected
      */
     protected int databaseUpdate(PreparedStatement stmt) throws SQLException {
 
@@ -365,7 +365,7 @@ public class BackpackService {
      * to the List of valueObjects. If no rows were found, an empty List will be returned.
      *
      * @param stmt         This parameter contains the SQL statement to be excuted.
-     * @return searchResult   Returns the list of Backpack objects matching the criterias
+     * @return ArrayList<Backpack> searchResult   Returns the list of Backpack objects matching the criterias
      */
     protected ArrayList<Backpack> listQuery(PreparedStatement stmt) throws SQLException {
 

@@ -11,7 +11,7 @@ public class QuestService {
     
     /**
      * 1-arg QuestService constructor
-     * @param connection to help with the databse
+     * @param Connection connection to help with the databse
      */
     public QuestService(Connection connection) throws SQLException {
         this.conn = connection;
@@ -23,8 +23,7 @@ public class QuestService {
      * for the real load-method which accepts the valueObject as a parameter. Returned
      * valueObject will be created using the createValueObject() method.
      * 
-     * @param name - the name of the quest to create a valueObject with
-     * @return valueObject - the class instance of quest to be passed to the real load method
+     * @return Quest valueObject
      */
     public Quest getObject(String name) throws NotFoundException, SQLException {
 
@@ -76,7 +75,7 @@ public class QuestService {
      * This should only be used when target tables have only small amounts
      * of data.
      *
-     * @return searchResults of Quest objects resulting from the query.
+     * @return ArrayList<Quest> of Quest objects resulting from the query.
      */
     public ArrayList<Quest> loadAll() throws SQLException {
 
@@ -244,7 +243,7 @@ public class QuestService {
      * If table is empty, the return value is 0. This method should be used before calling
      * loadAll, to make sure table has not too many rows.
      * 
-     * @return allRows the number of rows affected by the query.
+     * @return int allRows the number of rows affected by the query.
      */
     public int countAll() throws SQLException {
 
@@ -280,7 +279,7 @@ public class QuestService {
      *
      * @param valueObject  This parameter contains the class instance where search will be based.
      *                     Primary-key field should not be set.
-     * @return searchResults  The list of Quest objects resulting from the query with matching criteria.
+     * @return ArrayList<Quest>  The list of Quest objects resulting from the query with matching criteria.
      */
     public ArrayList<Quest> searchMatching(Quest valueObject) throws SQLException {
 
@@ -330,7 +329,7 @@ public class QuestService {
      * This method will also make sure that if cache is used, it will reset when data changes.
      *
      * @param stmt         This parameter contains the SQL statement to be excuted.
-     * @return result      The number of rows affected by the update.
+     * @return int result  The number of rows affected by the update.
      */
     protected int databaseUpdate(PreparedStatement stmt) throws SQLException {
 
@@ -383,7 +382,7 @@ public class QuestService {
      * to the List of valueObjects. If no rows were found, an empty List will be returned.
      *
      * @param stmt         This parameter contains the SQL statement to be excuted.
-     * @return searchResults The list of Quest objects related to the query.
+     * @return ArrayList<Quest> The list of Quest objects related to the query.
      */
     protected ArrayList<Quest> listQuery(PreparedStatement stmt) throws SQLException {
 

@@ -25,11 +25,11 @@ public class Hero {
     
     /**
      * 5-arg Hero constructor
-     * @param id - the id of the hero
-     * @param name - the name of the hero
-     * @param birthday - the birthdate of the hero
-     * @param exp - the exp amount of the hero
-     * @param level - the level of the hero
+     * @param int id - the id of the hero
+     * @param String name - the name of the hero
+     * @param Date birthday - the birthdate of the hero
+     * @param int exp - the exp amount of the hero
+     * @param int level - the level of the hero
      */
     public Hero(int id, String name, Date birthday, int exp, int level) {
         this.id = id;
@@ -41,7 +41,7 @@ public class Hero {
     
     /**
      * Gets hero id
-     * @return id of the hero
+     * @return int id of the hero
      */
     public int getId() {
         return id;
@@ -49,7 +49,7 @@ public class Hero {
     
     /**
      * Sets hero id
-     * @param id of the hero to be set as
+     * @param int id of the hero to be set as
      */
     public void setId(int id) {
         this.id = id;
@@ -57,7 +57,7 @@ public class Hero {
     
     /**
      * Gets hero name
-     * @return name of the hero
+     * @return String name of the hero
      */
     public String getName() {
         return name;
@@ -65,7 +65,7 @@ public class Hero {
     
     /**
      * Sets hero name
-     * @param name of the hero to be set as
+     * @param String name of the hero to be set as
      */
     public void setName(String name) {
         this.name = name;
@@ -81,7 +81,7 @@ public class Hero {
     
     /**
      * Sets hero birthday
-     * @param birthday of the hero to be set as
+     * @param Date birthday of the hero to be set as
      */
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
@@ -89,7 +89,7 @@ public class Hero {
     
     /**
      * Gets hero exp
-     * @return exp of the hero
+     * @return int exp of the hero
      */
     public int getExp() {
         return exp;
@@ -97,7 +97,7 @@ public class Hero {
     
     /**
      * Sets hero exp
-     * @param exp of the hero to be set
+     * @param int exp of the hero to be set
      */
     public void setExp(int exp) {
         this.exp = exp;
@@ -105,7 +105,7 @@ public class Hero {
     
     /**
      * Gets hero level
-     * @return level of the hero
+     * @return int level of the hero
      */
     public int getLevel() {
         return level;
@@ -113,7 +113,7 @@ public class Hero {
     
     /**
      * Sets hero level
-     * @param level of the hero to be set as
+     * @param int level of the hero to be set as
      */
     public void setLevel(int level) {
         this.level = level;

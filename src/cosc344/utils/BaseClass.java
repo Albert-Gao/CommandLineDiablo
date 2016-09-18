@@ -12,7 +12,7 @@ public class BaseClass {
 
     /**
      * prints boolean as true or false
-     * @param bol the boolean to print
+     * @param boolean bol the boolean to print
      */
     protected static void print(boolean bol){
         String text = bol?"true":"false";
@@ -21,7 +21,7 @@ public class BaseClass {
     
     /**
      * prints the int number
-     * @param number to println
+     * @param int number to println
      */
     protected static void print(int number) {
         System.out.println(number);
@@ -39,7 +39,7 @@ public class BaseClass {
     
     /**
      * Prints a string representation of the elements in the ArrayList
-     * @param list to iterate through and toString on
+     * @param ArrayList<T> list to iterate through and toString on
      */
     protected static <T> void groupPrint( ArrayList<T> list ){
         list.forEach((x)->{System.out.println(x.toString());});

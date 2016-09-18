@@ -1,4 +1,4 @@
- package cosc344.models;
+package cosc344.models;
 
 /**
  * Created by albertgao on 11/09/16.
@@ -22,7 +22,7 @@ public class Area {
     
     /**
      * Gets area name
-     * @return name of area
+     * @return String name of area
      */
     public String getName() {
         return name;
@@ -30,7 +30,7 @@ public class Area {
     
     /**
      * Sets area name
-     * @param name to be set to the area
+     * @param String name to be set to the area
      */
     public void setName(String name) {
         this.name = name;
@@ -38,7 +38,7 @@ public class Area {
     
     /**
      * Gets area size
-     * @return size of the area
+     * @return int size of the area
      */
     public int getSize() {
         return size;
@@ -46,7 +46,7 @@ public class Area {
     
     /**
      * Sets area size
-     * @param size of the area to be set
+     * @param int size of the area to be set
      */
     public void setSize(int size) {
         this.size = size;
@@ -54,7 +54,7 @@ public class Area {
     
     /**
      * Gets restricted value of the area
-     * @return restricted the restriction value
+     * @return int restricted the restriction value
      */
     public int getRestricted() {
         return restricted;
@@ -62,7 +62,7 @@ public class Area {
     
     /**
      * Sets restriction value of the area
-     * @param restricted the restriction value to be set to the area
+     * @param int restricted the restriction value to be set to the area
      */
     public void setRestricted(int restricted) {
         this.restricted = restricted;
@@ -70,8 +70,8 @@ public class Area {
     
     /**
      * Override toString
-     * Returns format of the area variables
-     * @return String representation of the area
+     * Returns String format of the area variables
+     * @Return String representation of the area
      */
     @Override
     public String toString() {
