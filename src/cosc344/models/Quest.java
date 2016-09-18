@@ -17,10 +17,10 @@ public class Quest {
     
     /**
      * 4-arg Quest constructor
-     * @param String name of the quest
-     * @param int mandatory check if it is mandatory or not
-     * @param String type of quest
-     * @param String difficulty of the quest
+     * @param name of the quest
+     * @param mandatory check if it is mandatory or not
+     * @param type of quest
+     * @param difficulty of the quest
      */
     public Quest(String name, int mandatory, String type, String difficulty) {
         this.name = name;
@@ -31,7 +31,7 @@ public class Quest {
     
     /**
      * Gets quest name
-     * @return String name of the quest
+     * @return name of the quest
      */
     public String getName() {
         return name;
@@ -39,7 +39,7 @@ public class Quest {
     
     /**
      * Sets quest name
-     * @param String name - the name that the quest will be set to
+     * @param name - the name that the quest will be set to
      */
     public void setName(String name) {
         this.name = name;
@@ -47,7 +47,7 @@ public class Quest {
     
     /**
      * Gets quest mandatory value
-     * @return int mandatory - the mandatory value of the quest
+     * @return mandatory - the mandatory value of the quest
      */
     public int getMandatory() {
         return mandatory;
@@ -55,7 +55,7 @@ public class Quest {
     
     /**
      * Sets quest mandatory value
-     * @param int mandatory - the value that the quest's mandatory value will be set to
+     * @param mandatory - the value that the quest's mandatory value will be set to
      */
     public void setMandatory(int mandatory) {
         this.mandatory = mandatory;
@@ -63,7 +63,7 @@ public class Quest {
     
     /**
      * Gets quest type
-     * @return String type of the quest
+     * @return type of the quest
      */
     public String getType() {
         return type;
@@ -71,7 +71,7 @@ public class Quest {
     
     /**
      * Sets quest type
-     * @param String type that the quest will be set to
+     * @param type that the quest will be set to
      */
     public void setType(String type) {
         this.type = type;
@@ -79,7 +79,7 @@ public class Quest {
     
     /**
      * Gets quest difficulty
-     * @return String difficulty of the quest
+     * @return difficulty of the quest
      */
     public String getDifficulty() {
         return difficulty;
@@ -87,7 +87,7 @@ public class Quest {
     
     /**
      * Sets quest difficulty
-     * @param String difficulty that the quest will be set as
+     * @param difficulty that the quest will be set as
      */
     public void setDifficulty(String difficulty) {
         this.difficulty = difficulty;

@@ -19,10 +19,10 @@ public class Monster {
     
     /**
      * 4-arg constructor sets 4 monster variables
-     * @param String name - name of the monster
-     * @param int level - level of the monster
-     * @param int hitpoints - hitpoint/health of the monster
-     * @param String areaname - area that the monster resides
+     * @param name - name of the monster
+     * @param level - level of the monster
+     * @param hitpoints - hitpoint/health of the monster
+     * @param areaname - area that the monster resides
      */
     public Monster(String name, int level, int hitpoints, String areaname) {
         this.name = name;
@@ -33,7 +33,7 @@ public class Monster {
     
     /**
      * Gets monster name
-     * @return String monster's name
+     * @return name - The monster's name
      */
     public String getName() {
         return name;
@@ -41,7 +41,7 @@ public class Monster {
     
     /**
      * Sets monster name
-     * @param String name - monster's name to be set
+     * @param name - monster's name to be set
      */
     public void setName(String name) {
         this.name = name;
@@ -49,7 +49,7 @@ public class Monster {
     
     /**
      * Gets monster level
-     * @return int level - monster's level
+     * @return level - monster's level
      */
     public int getLevel() {
         return level;
@@ -57,7 +57,7 @@ public class Monster {
     
     /**
      * Sets monster level
-     * @param int level - monster's level to be set
+     * @param level - monster's level to be set
      */
     public void setLevel(int level) {
         this.level = level;
@@ -65,7 +65,7 @@ public class Monster {
     
     /**
      * Gets monster hitpoints
-     * @return int hitpoints - monster's hitpoints
+     * @return hitpoints - monster's hitpoints
      */
     public int getHitpoints() {
         return hitpoints;
@@ -75,7 +75,7 @@ public class Monster {
      * Sets monster hitpoints. If hitpoints to be set is less than 0,
      * the hitpoints for the monster is set to 0 otherwise the value
      * of the param
-     * @param int hitpoints - monster's hitpoints to be set
+     * @param hitpoints - monster's hitpoints to be set
      */
     public void setHitpoints(int hitpoints) {
      if ( hitpoints < 0 ){
@@ -87,7 +87,7 @@ public class Monster {
     
     /**
      * Gets area name that the monster resides in
-     * @return String areaname - areaname that the monster resides
+     * @return areaname - areaname that the monster resides
      */
     public String getAreaname() {
         return areaname;
@@ -95,7 +95,7 @@ public class Monster {
     
     /**
      * Sets area that the monster resides
-     * @param String areaname - the area that the monster should reside in
+     * @param areaname - the area that the monster should reside in
      */
     public void setAreaname(String areaname) {
         this.areaname = areaname;

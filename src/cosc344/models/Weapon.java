@@ -24,15 +24,15 @@ public class Weapon {
     
     /**
      * 9-arg Weapon Constructor
-     * @param int id of the weapon
-     * @param String name of the weapon
-     * @param int pdamage the physical damage of the weapon
-     * @param int mdamage the magical damage of the weapon
-     * @param int heroid that the weapon belongs to
-     * @param String rarity the rarity of the weapon
-     * @param String backpackname of the backpack that the weapon resides
-     * @param String questname that the weapon drops from
-     * @param int value of the weapon
+     * @param id of the weapon
+     * @param name of the weapon
+     * @param pdamage the physical damage of the weapon
+     * @param mdamage the magical damage of the weapon
+     * @param heroid that the weapon belongs to
+     * @param rarity the rarity of the weapon
+     * @param backpackname of the backpack that the weapon resides
+     * @param questname that the weapon drops from
+     * @param value of the weapon
      */
     public Weapon(int id, String name, int pdamage, int mdamage, int heroid, String rarity, String backpackname, String questname, int value) {
         this.id = id;
@@ -48,7 +48,7 @@ public class Weapon {
     
     /**
      * Gets weapon id
-     * @return int id of the weapon
+     * @return id of the weapon
      */
     public int getId() {
         return id;
@@ -56,7 +56,7 @@ public class Weapon {
     
     /**
      * Sets weapon id
-     * @param int id of the weapon
+     * @param id of the weapon
      */
     public void setId(int id) {
         this.id = id;
@@ -64,7 +64,7 @@ public class Weapon {
     
     /**
      * Gets weapon name
-     * @return String name of the weapon
+     * @return name of the weapon
      */
     public String getName() {
         return name;
@@ -72,7 +72,7 @@ public class Weapon {
     
     /**
      * Sets weapon name
-     * @param String name that the weapon will be set as
+     * @param name that the weapon will be set as
      */
     public void setName(String name) {
         this.name = name;
@@ -80,7 +80,7 @@ public class Weapon {
     
     /**
      * Gets physical damage of the weapon
-     * @return int pdamage the physical damage of the weapon
+     * @return pdamage the physical damage of the weapon
      */
     public int getPdamage() {
         return pdamage;
@@ -88,7 +88,7 @@ public class Weapon {
     
     /**
      * Sets weapon physical damage
-     * @param int pdamage the value of the physical damage that the weapon will be set to
+     * @param pdamage the value of the physical damage that the weapon will be set to
      */
     public void setPdamage(int pdamage) {
         this.pdamage = pdamage;
@@ -96,7 +96,7 @@ public class Weapon {
     
     /**
      * Gets magical damage of the weapon
-     * @return int mdamage the magic damage of the weapon
+     * @return mdamage the magic damage of the weapon
      */
     public int getMdamage() {
         return mdamage;
@@ -104,7 +104,7 @@ public class Weapon {
     
     /**
      * Sets magic damage of the weapon
-     * @param int mdamage the magic damage of the weapon
+     * @param mdamage the magic damage of the weapon
      */
     public void setMdamage(int mdamage) {
         this.mdamage = mdamage;
@@ -112,7 +112,7 @@ public class Weapon {
     
     /**
      * Gets weapon rarity
-     * @return String rarity of the weapon
+     * @return rarity of the weapon
      */
     public String getRarity() {
         return rarity;
@@ -120,7 +120,7 @@ public class Weapon {
     
     /**
      * Sets weapon rarity
-     * @param String rarity of the weapon that it will be set to
+     * @param rarity of the weapon that it will be set to
      */
     public void setRarity(String rarity) {
         this.rarity = rarity;
@@ -128,7 +128,7 @@ public class Weapon {
     
     /**
      * Gets weapon backpackname
-     * @return String backpackname that the weapon resides in
+     * @return backpackname that the weapon resides in
      */
     public String getBackpackname() {
         return backpackname;
@@ -136,7 +136,7 @@ public class Weapon {
     
     /**
      * Sets weapon backpackname
-     * @param String backpackname that the weapon will reside in
+     * @param backpackname that the weapon will reside in
      */
     public void setBackpackname(String backpackname) {
         this.backpackname = backpackname;
@@ -144,7 +144,7 @@ public class Weapon {
     
     /**
      * Gets weapon questname
-     * @return String questname of the quest that drops this weapon
+     * @return questname of the quest that drops this weapon
      */
     public String getQuestname() {
         return questname;
@@ -152,7 +152,7 @@ public class Weapon {
     
     /**
      * Sets weapon questname
-     * @return String questname that is going to be dropping the weapon
+     * @return questname that is going to be dropping the weapon
      */
     public void setQuestname(String questname) {
         this.questname = questname;
@@ -160,7 +160,7 @@ public class Weapon {
     
     /**
      * Gets weapon heroid
-     * @return int heroid of the weapon's owner
+     * @return heroid of the weapon's owner
      */
     public int getHeroid() {
         return heroid;
@@ -168,7 +168,7 @@ public class Weapon {
     
     /**
      * Sets weapon heroid
-     * @param int heroid that the weapon will belong to
+     * @param heroid that the weapon will belong to
      */
     public void setHeroid(int heroid) {
         this.heroid = heroid;
@@ -176,7 +176,7 @@ public class Weapon {
     
     /**
      * Gets weapon value
-     * @return int the value of the weapon
+     * @return value the value of the weapon
      */
     public int getValue() {
         return value;
@@ -184,7 +184,7 @@ public class Weapon {
     
     /**
      * Sets weapon value
-     * @param int value that the weapon will be set to
+     * @param value that the weapon will be set to
      */
     public void setValue(int value) {
         this.value = value;

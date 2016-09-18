@@ -16,9 +16,9 @@ public class Consumable {
     
     /**
      * 3-arg Consumable constructor
-     * @param String name   The name of the consumable
-     * @param int heroid    The heroid that the consumable belongs to
-     * @param String backpackname The name of the backpack that the consumable resides
+     * @param name   The name of the consumable
+     * @param heroid    The heroid that the consumable belongs to
+     * @param backpackname The name of the backpack that the consumable resides
      */
     public Consumable(String name, int heroid, String backpackname) {
         this.name = name;
@@ -28,7 +28,7 @@ public class Consumable {
     
     /**
      * Gets consumable name
-     * @return String name of the consumable
+     * @return name of the consumable
      */
     public String getName() {
         return name;
@@ -36,7 +36,7 @@ public class Consumable {
     
     /**
      * Sets consumable name
-     * @param String name that the consumable will be set to
+     * @param name that the consumable will be set to
      */
     public void setName(String name) {
         this.name = name;
@@ -52,7 +52,7 @@ public class Consumable {
     
     /**
      * Set heroid of the consumable
-     * @param int heroid of the consumable
+     * @param heroid of the consumable
      */
     public void setHeroid(int heroid) {
         this.heroid = heroid;
@@ -60,7 +60,7 @@ public class Consumable {
     
     /**
      * Gets backpackname of the consumable
-     * @return String backpackname of the consumable
+     * @return backpackname of the consumable
      */
     public String getBackpackname() {
         return backpackname;
@@ -68,7 +68,7 @@ public class Consumable {
     
     /**
      * Sets backpackname of the consumable
-     * @param String packpackname  The backpackname that is going to be set to the consumable
+     * @param backpackname  The backpackname that is going to be set to the consumable
      */
     public void setBackpackname(String backpackname) {
         this.backpackname = backpackname;

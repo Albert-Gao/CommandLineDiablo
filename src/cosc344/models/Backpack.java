@@ -18,10 +18,10 @@ public class Backpack {
     
     /**
      * 4-arg Backpack constructor sets Backpack object variables name, heroid, size, gold.
-     * @param String name - of the backpack
-     * @param int heroid - heroid that the backpack belongs to
-     * @param int size - size of the backpack
-     * @param int gold - the amount of gold in the backpack
+     * @param name - of the backpack
+     * @param heroid - heroid that the backpack belongs to
+     * @param size - size of the backpack
+     * @param gold - the amount of gold in the backpack
      */
     public Backpack(String name, int heroid, int size, int gold /*, ArrayList<Consumable> consumables*/) {
         this.name = name;
@@ -33,7 +33,7 @@ public class Backpack {
     
     /**
      * Gets backpack name
-     * @return String name of the backpack
+     * @return name of the backpack
      */
     public String getName() {
         return name;
@@ -41,7 +41,7 @@ public class Backpack {
     
     /**
      * Sets backpack name
-     * @param String name that the backpack will be set to
+     * @param name that the backpack will be set to
      */
     public void setName(String name) {
         this.name = name;
@@ -49,7 +49,7 @@ public class Backpack {
     
     /**
      * Gets the heroid corresponding to the backpack
-     * @return int heroid of the backpack owner
+     * @return heroid of the backpack owner
      */
     public int getHeroid() {
         return heroid;
@@ -57,7 +57,7 @@ public class Backpack {
     
     /**
      * Sets heroid for the backpack
-     * @param int heroid of the hero that is going to own the backpack
+     * @param heroid of the hero that is going to own the backpack
      */
     public void setHeroid(int heroid) {
         this.heroid = heroid;
@@ -65,7 +65,7 @@ public class Backpack {
     
     /**
      * Gets size of the backpack
-     * @return int size of the backpack
+     * @return size of the backpack
      */
     public int getSize() {
         return size;
@@ -73,7 +73,7 @@ public class Backpack {
     
     /**
      * Sets size of the backpack
-     * @param int size the value that the backpack size will be set to
+     * @param size the value that the backpack size will be set to
      */
     public void setSize(int size) {
         this.size = size;
@@ -81,7 +81,7 @@ public class Backpack {
     
     /**
      * Gets gold amount in the backpack
-     * @return int gold amound in the backpack
+     * @return gold amound in the backpack
      */
     public int getGold() {
         return gold;
@@ -89,7 +89,7 @@ public class Backpack {
     
     /**
      * Sets gold amount in the backpack
-     * @param int gold - the amound of gold that is going to be in the backpack
+     * @param gold - the amound of gold that is going to be in the backpack
      */
     public void setGold(int gold) {
         this.gold = gold;

@@ -10,7 +10,7 @@ public class HeroService {
     
     /**
      * 1-arg HeroService constructor
-     * @param Connection connection to help with the database
+     * @param connection to help with the database
      */
     public HeroService(Connection connection) throws SQLException  {
         this.conn = connection;
@@ -21,6 +21,9 @@ public class HeroService {
      * using given Primary-Key as identifier. This method is just a convenience method
      * for the real load-method which accepts the valueObject as a parameter. Returned
      * valueObject will be created using the createValueObject() method.
+     * 
+     * @param id the hero objects id to create a valueObject with
+     * @return valueObject the hero instance to be passed into the real load method
      */
     public Hero getObject(int id) throws NotFoundException, SQLException {
 
@@ -69,7 +72,7 @@ public class HeroService {
      * This should only be used when target tables have only small amounts
      * of data.
      *
-     * @return ArrayList<Hero> list of hero objects from the query
+     * @return searchResults The list of hero objects from the query
      */
     public ArrayList<Hero> loadAll() throws SQLException {
         String sql = "SELECT * FROM hero ORDER BY pid ASC ";
@@ -231,7 +234,7 @@ public class HeroService {
      * If table is empty, the return value is 0. This method should be used before calling
      * loadAll, to make sure table has not too many rows.
      *
-     * @return int count of the rows affected from the query
+     * @return allRows - count of the rows affected from the query
      */
     public int countAll() throws SQLException {
 
@@ -267,7 +270,7 @@ public class HeroService {
      *
      * @param valueObject  This parameter contains the class instance where search will be based.
      *                     Primary-key field should not be set.
-     * @return ArrayList<Hero> The list of Hero objects matching the criteria of the query.
+     * @return searchResults The list of Hero objects matching the criteria of the query.
      */
     public ArrayList<Hero> searchMatching(Hero valueObject) throws SQLException {
 
@@ -316,7 +319,7 @@ public class HeroService {
      * This method will also make sure that if cache is used, it will reset when data changes.
      *
      * @param stmt         This parameter contains the SQL statement to be excuted.
-     * @return int         The number of rows affected by the query
+     * @return result      The number of rows affected by the query
      */
     protected int databaseUpdate(PreparedStatement stmt) throws SQLException {
 
@@ -368,7 +371,7 @@ public class HeroService {
      * to the List of valueObjects. If no rows were found, an empty List will be returned.
      *
      * @param stmt         This parameter contains the SQL statement to be excuted.
-     * @return ArrayList<Hero> The list of Hero objects affected by the query.
+     * @return searchResults The list of Hero objects affected by the query.
      */
     protected ArrayList<Hero> listQuery(PreparedStatement stmt) throws SQLException {
 
