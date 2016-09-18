@@ -8,7 +8,11 @@ import java.util.*;
 
 public class ConsumableService {
     private Connection conn;
-
+    
+    /**
+     * 1-arg ConsumableService constructor
+     * @param Connection connection object to help with the database
+     */
     public ConsumableService(Connection connection) throws SQLException {
         this.conn = connection;
     }
@@ -18,6 +22,11 @@ public class ConsumableService {
      * using given Primary-Key as identifier. This method is just a convenience method
      * for the real load-method which accepts the valueObject as a parameter. Returned
      * valueObject will be created using the createValueObject() method.
+     * 
+     * @param String name of the consumable
+     * @param int heroid related to the consumable
+     * @param String backpackname related to the backpack
+     * @return Consumable valueObject 
      */
     public Consumable getObject(String name, int heroid, String backpackname) throws NotFoundException, SQLException {
 
@@ -77,7 +86,8 @@ public class ConsumableService {
      * will consume huge amounts of resources if table has lot's of rows.
      * This should only be used when target tables have only small amounts
      * of data.
-     *
+     * 
+     * @return ArrayList<Consumable> searchResults   The list of Consumable objects from the query
      */
     public ArrayList<Consumable> loadAll() throws SQLException {
 
@@ -284,6 +294,7 @@ public class ConsumableService {
      *
      * @param valueObject  This parameter contains the class instance where search will be based.
      *                     Primary-key field should not be set.
+     * @return ArrayList<Consumable>  The resulting list of consumable objects returned by the query.
      */
     public ArrayList<Consumable> searchMatching(Consumable valueObject) throws SQLException {
 
@@ -328,6 +339,7 @@ public class ConsumableService {
      * This method will also make sure that if cache is used, it will reset when data changes.
      *
      * @param stmt         This parameter contains the SQL statement to be excuted.
+     * @return int result  The number of rows affected by the update.
      */
     protected int databaseUpdate(PreparedStatement stmt) throws SQLException {
 
@@ -379,6 +391,7 @@ public class ConsumableService {
      * to the List of valueObjects. If no rows were found, an empty List will be returned.
      *
      * @param stmt         This parameter contains the SQL statement to be excuted.
+     * @return ArrayList<Consumable> searchResults list of Consumable objects of the query.
      */
     protected ArrayList<Consumable> listQuery(PreparedStatement stmt) throws SQLException {
 
