@@ -13,7 +13,11 @@ import java.util.ArrayList;
  */
 public class ConnectionManager {
     private static Connection cn = null;
-
+    
+    /**
+     * Establishes connection
+     * @return Connection the established connection
+     */
     public static Connection getSQLConnection() throws SQLException {
         if (cn == null) {
             ArrayList<String> list = new ArrayList<>();
@@ -47,7 +51,10 @@ public class ConnectionManager {
             e.printStackTrace();
         }
     }
-
+    
+    /**
+     * Closes connection
+     */
     public static void closeConnection() throws SQLException {
         cn.close();
     }

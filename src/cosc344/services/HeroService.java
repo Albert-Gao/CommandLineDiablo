@@ -7,7 +7,11 @@ import java.util.ArrayList;
 
 public class HeroService {
     private Connection conn;
-
+    
+    /**
+     * 1-arg HeroService constructor
+     * @param Connection connection to help with the database
+     */
     public HeroService(Connection connection) throws SQLException  {
         this.conn = connection;
     }
@@ -41,9 +45,9 @@ public class HeroService {
     public void load(Hero valueObject) throws NotFoundException, SQLException {
 
         //String sql = "SELECT hero.pid,hero.hname,hero.bdate,hero.exp,HLEVEL.hlevel FROM hero JOIN HLEVEL ON hero.exp = HLEVEL.hexp WHERE (pid = ? ) ";
-    	String sql = "SELECT * FROM hero WHERE (pid = ? ) ";
+     String sql = "SELECT * FROM hero WHERE (pid = ? ) ";
         
-    	PreparedStatement stmt = null;
+     PreparedStatement stmt = null;
 
         try {
             stmt = conn.prepareStatement(sql);
@@ -65,6 +69,7 @@ public class HeroService {
      * This should only be used when target tables have only small amounts
      * of data.
      *
+     * @return ArrayList<Hero> list of hero objects from the query
      */
     public ArrayList<Hero> loadAll() throws SQLException {
         String sql = "SELECT * FROM hero ORDER BY pid ASC ";
@@ -226,6 +231,7 @@ public class HeroService {
      * If table is empty, the return value is 0. This method should be used before calling
      * loadAll, to make sure table has not too many rows.
      *
+     * @return int count of the rows affected from the query
      */
     public int countAll() throws SQLException {
 
@@ -261,6 +267,7 @@ public class HeroService {
      *
      * @param valueObject  This parameter contains the class instance where search will be based.
      *                     Primary-key field should not be set.
+     * @return ArrayList<Hero> The list of Hero objects matching the criteria of the query.
      */
     public ArrayList<Hero> searchMatching(Hero valueObject) throws SQLException {
 
@@ -309,6 +316,7 @@ public class HeroService {
      * This method will also make sure that if cache is used, it will reset when data changes.
      *
      * @param stmt         This parameter contains the SQL statement to be excuted.
+     * @return int         The number of rows affected by the query
      */
     protected int databaseUpdate(PreparedStatement stmt) throws SQLException {
 
@@ -360,6 +368,7 @@ public class HeroService {
      * to the List of valueObjects. If no rows were found, an empty List will be returned.
      *
      * @param stmt         This parameter contains the SQL statement to be excuted.
+     * @return ArrayList<Hero> The list of Hero objects affected by the query.
      */
     protected ArrayList<Hero> listQuery(PreparedStatement stmt) throws SQLException {
 
@@ -392,7 +401,7 @@ public class HeroService {
     }
     
     public int expToLvl(int exp){
-    	return Math.floorDiv(exp, 50);
+     return Math.floorDiv(exp, 50);
     }
 
 }

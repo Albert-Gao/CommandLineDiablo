@@ -10,11 +10,19 @@ public class BaseClass {
         System.out.println(text);
     }
 
+    /**
+     * prints boolean as true or false
+     * @param boolean bol the boolean to print
+     */
     protected static void print(boolean bol){
         String text = bol?"true":"false";
         print(text);
     }
     
+    /**
+     * prints the int number
+     * @param int number to println
+     */
     protected static void print(int number) {
         System.out.println(number);
     }
@@ -28,7 +36,11 @@ public class BaseClass {
         print("");
         print("");
     }
-
+    
+    /**
+     * Prints a string representation of the elements in the ArrayList
+     * @param ArrayList<T> list to iterate through and toString on
+     */
     protected static <T> void groupPrint( ArrayList<T> list ){
         list.forEach((x)->{System.out.println(x.toString());});
     }

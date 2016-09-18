@@ -1,6 +1,9 @@
 package cosc344.utils;
 
 public class SceneGenerator extends BaseClass {
+  /**
+   * prints the game name at the start
+   */
     public static void beginGame() {
         printBlankSpace();
         print(" ________  ___  ________  ________  ___       ________          ________");
@@ -12,7 +15,10 @@ public class SceneGenerator extends BaseClass {
         print("    \\|_______|\\|__|\\|__|\\|__|\\|_______|\\|_______|\\|_______|        \\|_______|");
         printBlankSpace();
     }
-
+    
+    /**
+     * prints the visual representation of an axe
+     */
     public static void showAxe() {
         printBlankSpace();
         print("  ,:\\      /:.");
@@ -33,6 +39,9 @@ public class SceneGenerator extends BaseClass {
         printBlankSpace();
     }
 
+    /**
+     * prints the visual representation of a sword
+     */
     public static void showSword(){
         printBlankSpace();
         print("                          ___");
@@ -47,7 +56,10 @@ public class SceneGenerator extends BaseClass {
         print("                          (_((");
         printBlankSpace();
     }
-
+    
+    /**
+     * prints the visual representation of a bow
+     */
     public static void showBow(){
         printBlankSpace();
         print("          4$$-.");
@@ -71,33 +83,39 @@ public class SceneGenerator extends BaseClass {
         print("          '$$");
         printBlankSpace();
     }
-
+    
+    /**
+     * prints the visual representation of the intro to the area
+     */
     public static void showArea() {
         printBlankSpace();
         print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-		print("@@@@@@@@@@@@@@@@@@@@@@@'~~~     ~~~`@@@@@@@@@@@@@@@@@@@@@@@@@");
-		print("@@@@@@@@@@@@@@@@@@'                     `@@@@@@@@@@@@@@@@@@@@");
-		print("@@@@@@@@@@@@@@@'                           `@@@@@@@@@@@@@@@@@");
-		print("@@@@@@@@@@@@@'                               `@@@@@@@@@@@@@@@");
-		print("@@@@@@@@@@@'                                   `@@@@@@@@@@@@@");
-		print("@@@@@@@@@@'                                     `@@@@@@@@@@@@");
-		print("@@@@@@@@@'                                       `@@@@@@@@@@@");
-		print("@@@@@@@@@                                         @@@@@@@@@@@");
-		print("@@@@@@@@'                      n,                 `@@@@@@@@@@");
-		print("@@@@@@@@                     _/ | _                @@@@@@@@@@");
-		print("@@@@@@@@                    /'  `'/                @@@@@@@@@@");
-		print("@@@@@@@@a                 <~    .'                a@@@@@@@@@@");
-		print("@@@@@@@@@                 .'    |                 @@@@@@@@@@@");
-		print("@@@@@@@@@a              _/      |                a@@@@@@@@@@@");
-		print("@@@@@@@@@@a           _/      `.`.              a@@@@@@@@@@@@");
-		print("@@@@@@@@@@@a     ____/ '   \\__ | |______       a@@@@@@@@@@@@@");
-		print("@@@@@@@@@@@@@a__/___/      /__\\ \\ \\     \\___.a@@@@@@@@@@@@@@@");
-		print("@@@@@@@@@@@@@/  (___.'\\_______)\\_|_|        \\@@@@@@@@@@@@@@@@");
-		print("@@@@@@@@@@@@|\\________                       ~~~~~\\@@@@@@@@@@");
-		print("---------------->Into the adventure of Diablo<----------------");
+  print("@@@@@@@@@@@@@@@@@@@@@@@'~~~     ~~~`@@@@@@@@@@@@@@@@@@@@@@@@@");
+  print("@@@@@@@@@@@@@@@@@@'                     `@@@@@@@@@@@@@@@@@@@@");
+  print("@@@@@@@@@@@@@@@'                           `@@@@@@@@@@@@@@@@@");
+  print("@@@@@@@@@@@@@'                               `@@@@@@@@@@@@@@@");
+  print("@@@@@@@@@@@'                                   `@@@@@@@@@@@@@");
+  print("@@@@@@@@@@'                                     `@@@@@@@@@@@@");
+  print("@@@@@@@@@'                                       `@@@@@@@@@@@");
+  print("@@@@@@@@@                                         @@@@@@@@@@@");
+  print("@@@@@@@@'                      n,                 `@@@@@@@@@@");
+  print("@@@@@@@@                     _/ | _                @@@@@@@@@@");
+  print("@@@@@@@@                    /'  `'/                @@@@@@@@@@");
+  print("@@@@@@@@a                 <~    .'                a@@@@@@@@@@");
+  print("@@@@@@@@@                 .'    |                 @@@@@@@@@@@");
+  print("@@@@@@@@@a              _/      |                a@@@@@@@@@@@");
+  print("@@@@@@@@@@a           _/      `.`.              a@@@@@@@@@@@@");
+  print("@@@@@@@@@@@a     ____/ '   \\__ | |______       a@@@@@@@@@@@@@");
+  print("@@@@@@@@@@@@@a__/___/      /__\\ \\ \\     \\___.a@@@@@@@@@@@@@@@");
+  print("@@@@@@@@@@@@@/  (___.'\\_______)\\_|_|        \\@@@@@@@@@@@@@@@@");
+  print("@@@@@@@@@@@@|\\________                       ~~~~~\\@@@@@@@@@@");
+  print("---------------->Into the adventure of Diablo<----------------");
     }
     
-	public static void showBigArea() {
+ /**
+  * prints the visual representation of area in the game
+  */
+ public static void showBigArea() {
         print("                             _______________________________________");
         print("                            /  ___________________________________  \\");
         print("                           /  /_/_/_/_/_|_|_|_|_|_|_|_|_|_\\_\\_\\_\\_\\  \\");
@@ -133,7 +151,10 @@ public class SceneGenerator extends BaseClass {
         print("|_______________________________________________________________________________________________|");
         printBlankSpace();
     }
-
+    
+    /**
+     * prints the visual representation of the hero in the game
+     */
     public static void showHero() {
         printBlankSpace();
         print("             |\\_|\\");
@@ -159,7 +180,10 @@ public class SceneGenerator extends BaseClass {
         print("          |_/");
         printBlankSpace();
     }
-
+    
+    /**
+     * prints the visual representation of a monster in the game
+     */
     public static void showMonster() {
         printBlankSpace();
         print("              ,   .-'\"'=;_  ,");

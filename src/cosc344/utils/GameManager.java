@@ -29,7 +29,12 @@ public class GameManager extends BaseClass {
     private MonsterService monsterService;
     private QuestService questService;
     private WeaponService weaponService;
-
+    
+    /**
+     * GameManager constructor with 2 parameters
+     * @param Scanner scanner - scanner object to help with user input
+     * @param Connection conn - connection object to help with database connection
+     */
     public GameManager(Scanner scanner, Connection conn) {
         this.scanner = scanner;
         this.conn = conn;
@@ -70,10 +75,10 @@ public class GameManager extends BaseClass {
                 print("");
                 print("Choose your hero by entering the ID:");
                 try{
-                	heroid = scanner.nextInt();
-                	mark = findID(list,heroid) ? true : false;
+                 heroid = scanner.nextInt();
+                 mark = findID(list,heroid) ? true : false;
                 }catch(Exception e){
-                	print("Please enter ID, it's a number!");
+                 print("Please enter ID, it's a number!");
                 }
                 scanner.nextLine(); //consume the new line
             }
@@ -97,7 +102,13 @@ public class GameManager extends BaseClass {
             e.printStackTrace();
         }
     }
-
+    
+    /**
+     * private boolean method searches the hero list to find the specified id
+     * @param ArrayList<Hero> list - list of hero objects to search through
+     * @param int id - id of the hero to search for in the list
+     * @return boolean true if hero id is found in the list, false if not
+     */
     private boolean findID(ArrayList<Hero> list, int id){
         for (Hero h:list){
             if (h.getId()==id)
@@ -109,7 +120,7 @@ public class GameManager extends BaseClass {
 
     //step 2 - choose a weapon
     public void pickWeapon(){
-    	boolean mark = false;
+     boolean mark = false;
         try {
             //load all the available areas
             ArrayList<Weapon> list = this.weaponService.loadAllByHeroId(this.hero.getId());
@@ -123,10 +134,10 @@ public class GameManager extends BaseClass {
                 //wait for the user to input
                 print("Choose your weapon by its Id:");
                 try{
-                	weaponId = scanner.nextInt();
+                 weaponId = scanner.nextInt();
                     mark = findWeaponName(list,weaponId) ? true : false;
                 }catch(Exception e){
-                	print("Please enter ID, it's a number!");
+                 print("Please enter ID, it's a number!");
                 }
                 scanner.nextLine(); //consume the new line
             }
@@ -143,6 +154,12 @@ public class GameManager extends BaseClass {
         }        
     }
     
+    /**
+     * private boolean method searches the weapon list for the requested weapon id
+     * @param ArrayList<Weapon> list - list of weapon objects to search through
+     * @param int id - id of the weapon to search in the list
+     * @return boolean true if weapon id is in the list, false if it is not
+     */
     private boolean findWeaponName(ArrayList<Weapon> list, int id){
         for ( Weapon a:list ){
             if ( a.getId()==id ) //god damn stupid shit nasty slut java 
@@ -170,11 +187,11 @@ public class GameManager extends BaseClass {
                 //wait for the user to input
                 print("Choose your area by its name:");
                 try{
-                	areaname = scanner.nextLine();
+                 areaname = scanner.nextLine();
                     mark = findAreaName(list,areaname) ? true : false;
                 }catch(Exception e){
-                	print("Please enter name, it's a string!");
-                	scanner.nextLine();
+                 print("Please enter name, it's a string!");
+                 scanner.nextLine();
                 }
             }
 
@@ -191,10 +208,16 @@ public class GameManager extends BaseClass {
             e.printStackTrace();
         }
     }
-
+    
+    /**
+     * Private method returns true or false if areaname is in the list or not
+     * @param ArrayList<Area> list - list of the current areanames
+     * @param String name - name of the area to search for in the list
+     * @return boolean true if areaname is found false if not
+     */
     private boolean findAreaName(ArrayList<Area> list, String name){
         for ( Area a:list ){
-            if ( a.getName().equals(name) ) //god damn stupid shit nasty slut java 
+            if ( a.getName().equals(name) )
                 return true;
         }
         print("No area found, try again!");
@@ -203,166 +226,195 @@ public class GameManager extends BaseClass {
     
     //step 4 - battle (kill one monster for completing one quest)
     public void battle() {
-    	printBlankSpace();
-    	print("============================================");
-    	print("===           Battle Begins!             ===");
-    	print("===        Try killing them all!         ===");
-    	print("===    			 -*-				    ===");
-    	print("===              COMMANDS:               ===");
-    	print("===        p   :   physical damage;      ===");
-    	print("===        m   :   magic damage;         ===");
-    	print("===        q   :   quit;                 ===");
-    	print("============================================");
-    	
-    	int monsterId = 0;
-    	String action = "";
+     printBlankSpace();
+     print("============================================");
+     print("===           Battle Begins!             ===");
+     print("===        Try killing them all!         ===");
+     print("===        -*-        ===");
+     print("===              COMMANDS:               ===");
+     print("===        p   :   physical damage;      ===");
+     print("===        m   :   magic damage;         ===");
+     print("===        q   :   quit;                 ===");
+     print("============================================");
+     
+     int monsterId = 0;
+     String action = "";
         //battle until user press q;
         while (!isMonsterAllDead(monsterId)) {
-        	int currentMonsterHP = this.monsters.get(monsterId).getHitpoints();
-        	printBlankSpace();
-        	print("**********************************");
-        	print("Monster: "+this.monsters.get(monsterId).getName());
-        	print("HP     : "+this.monsters.get(monsterId).getHitpoints());
-        	print("**********************************");
-        	print("");
-        	this.rounds++;
+         int currentMonsterHP = this.monsters.get(monsterId).getHitpoints();
+         printBlankSpace();
+         print("**********************************");
+         print("Monster: "+this.monsters.get(monsterId).getName());
+         print("HP     : "+this.monsters.get(monsterId).getHitpoints());
+         print("**********************************");
+         print("");
+         this.rounds++;
             print("ROUND "+this.rounds+": Choose your action:");
             action = scanner.nextLine();
             switch (action) {
                 case "p": //physical damage
-                	this.fightMonster(monsterId, true);
+                 this.fightMonster(monsterId, true);
                     this.attackNumbers[0]++;
-                	break;
+                 break;
                 case "m": //magic damage
-                	this.fightMonster(monsterId, false);
-                	this.attackNumbers[1]++;
-                	break;
+                 this.fightMonster(monsterId, false);
+                 this.attackNumbers[1]++;
+                 break;
                 case "q": //quit
-                	print("*************");
-                	print("*YOU COWARD!*");
-                	print("*************");
-                	break;
+                 print("*************");
+                 print("*YOU COWARD!*");
+                 print("*************");
+                 break;
                 default:
-                	print("-------------------------------------");
-                	print("-WRONG COMMANDS! Try following ones:-");
-                	print("-       p : physical damage         -");
+                 print("-------------------------------------");
+                 print("-WRONG COMMANDS! Try following ones:-");
+                 print("-       p : physical damage         -");
                     print("-       m : magic damage            -");
                     print("-       q : quit                    -");
                     print("-------------------------------------");
                     break;
             }
             if (action.equals("q")){
-            	break;
+             break;
             }
             if ( isMonsterDead(monsterId) ){ //check if current monster is dead
-            	printBlankSpace();
-            	print("********************************");
-            	print("Congratulations!, you've killed "+this.monsters.get(monsterId).getName());
-            	print("********************************");
+             printBlankSpace();
+             print("********************************");
+             print("Congratulations!, you've killed "+this.monsters.get(monsterId).getName());
+             print("********************************");
 
-            	//add the experiences, equals to level of monster;
-            	int exp = this.hero.getExp();
-            	this.hero.setExp(exp+this.monsters.get(monsterId).getLevel());
-            	
-            	//next monster
-            	monsterId++;
+             //add the experiences, equals to level of monster;
+             int exp = this.hero.getExp();
+             this.hero.setExp(exp+this.monsters.get(monsterId).getLevel());
+             
+             //next monster
+             monsterId++;
             }
         }
     }
     
+    /**
+     * private method checks if monster is dead
+     * @param int id of the monster to be checked
+     * @return boolean true if monster's hitpoints is 0 else false
+     */
     private boolean isMonsterDead(int id){
-    	if (this.monsters.get(id).getHitpoints()==0){
-    		return true;
-    	}
-    	return false;
+     if (this.monsters.get(id).getHitpoints()==0){
+      return true;
+     }
+     return false;
     }
-
+    
+    /**
+     * private method checks if monsters are all dead in the area
+     * @param int id - value to check if all the monsters are dead, usually the value is 0
+     * @return boolean true if all monsters are dead, false if the size of the list of monsters is not 0
+     */
     private boolean isMonsterAllDead(int id){
-    	if ( id == this.monsters.size() ){
-    		print("********************************");
-    		print("* You have killed all monsters!*");
-    		print("*     Congratulations! Hero!   *");
-    		print("********************************");
-    		return true;
-    	}
-    	return false;
+     if ( id == this.monsters.size() ){
+      print("********************************");
+      print("* You have killed all monsters!*");
+      print("*     Congratulations! Hero!   *");
+      print("********************************");
+      return true;
+     }
+     return false;
     }
     
+    /**
+     * private void method is responsible for the fight with the monster
+     * monster fights with either physical or magical damage depending on it's damage type
+     * @param int monsterId - id of the monster to fight with
+     * @param boolean isPhysical - true if monster does physical damage, false if it does magical
+     */
     private void fightMonster(int monsterId, boolean isPhysical){
-    	int currentMonsterHP = this.monsters.get(monsterId).getHitpoints();
-    	int damage = isPhysical ? this.weapon.getPdamage() : this.weapon.getMdamage();
-    	String damageTypeText = isPhysical ? " physical" : " magical";
-    	
-    	print("You use "+this.weapon.getName());
-    	print("It causes "+ damage + damageTypeText + " damage!");
-    	print(this.damageToText(damage));
-    	this.monsters.get(monsterId).setHitpoints(currentMonsterHP - damage);
+     int currentMonsterHP = this.monsters.get(monsterId).getHitpoints();
+     int damage = isPhysical ? this.weapon.getPdamage() : this.weapon.getMdamage();
+     String damageTypeText = isPhysical ? " physical" : " magical";
+     
+     print("You use "+this.weapon.getName());
+     print("It causes "+ damage + damageTypeText + " damage!");
+     print(this.damageToText(damage));
+     this.monsters.get(monsterId).setHitpoints(currentMonsterHP - damage);
     }
     
+    /**
+     * private String outputs text description of the damage depending on how much damage is done
+     * @param int dmg the damage value to determine what message to display
+     */
     private String damageToText(int dmg){
-    	if (dmg > 65){
-    		return "What a mighty move!";
-    	} else {
-    		return "A weak attack!";
-    	}
+     if (dmg > 65){
+      return "What a mighty move!";
+     } else {
+      return "A weak attack!";
+     }
     }
     
     //step 5 - display the result (trigger: die or choose 'quit')
     public void displayReport(){
-    	try{
-	    	printBlankSpace();
-	    	print("======REPORT======");
-	    	print("Hero Name: "+this.hero.getName());
-	    	print("Hero EXP : "+this.hero.getExp());
-	    	print("");
-	    	print("======ROUNDS======");
-	    	print("    "+this.rounds+" rounds");
-	    	print("==================");
-	    	print("");
-	    	print("======ATTACK======");
-	    	print("Attack   : "+(this.attackNumbers[0]+this.attackNumbers[1])+" times");
-	    	print("Physical : "+this.attackNumbers[0]+" times");
-	    	print("Magical  : "+this.attackNumbers[1]+" times");
-	    	print("==================");
-	    	print("");
-	    	print("======DAMAGE======");
-	    	print("Physical : "+(this.attackNumbers[0]*this.weapon.getPdamage()));
-	    	print("Magical  : "+(this.attackNumbers[1]*this.weapon.getMdamage()));
-	    	print("==================");
-	    	print("");
-	    	print("=====MONSTERS=====");
-	    	int count = printDeadMonster();
-	    	print("==================");
-	    	print("");
-	    	print("=======AREA=======");
-	    	print("Name     : "+this.area.getName());
-	    	print("Monsters : "+this.monsterService.loadAllByGroupByAreaName(this.area.getName()));
-	    	print("Killed   : "+count);
-	    	print("==================");
-    	} catch(Exception e){
-    		print(e.getMessage());
-		}
-    }
-
-    private int printDeadMonster(){
-    	int count = 0;
-    	for (int i=0;i<this.monsters.size();i++){
-    		Monster m = this.monsters.get(i);
-    		if (m.getHitpoints()==0){
-    			print("Name["+i+"]  : "+m.getName());
-    			count++;
-    		}
-    	}
-    	return count;
+     try{
+      printBlankSpace();
+      print("======REPORT======");
+      print("Hero Name: "+this.hero.getName());
+      print("Hero EXP : "+this.hero.getExp());
+      print("");
+      print("======ROUNDS======");
+      print("    "+this.rounds+" rounds");
+      print("==================");
+      print("");
+      print("======ATTACK======");
+      print("Attack   : "+(this.attackNumbers[0]+this.attackNumbers[1])+" times");
+      print("Physical : "+this.attackNumbers[0]+" times");
+      print("Magical  : "+this.attackNumbers[1]+" times");
+      print("==================");
+      print("");
+      print("======DAMAGE======");
+      print("Physical : "+(this.attackNumbers[0]*this.weapon.getPdamage()));
+      print("Magical  : "+(this.attackNumbers[1]*this.weapon.getMdamage()));
+      print("==================");
+      print("");
+      print("=====MONSTERS=====");
+      int count = printDeadMonster();
+      print("==================");
+      print("");
+      print("=======AREA=======");
+      print("Name     : "+this.area.getName());
+      print("Monsters : "+this.monsterService.loadAllByGroupByAreaName(this.area.getName()));
+      print("Killed   : "+count);
+      print("==================");
+     } catch(Exception e){
+      print(e.getMessage());
+  }
     }
     
+    /**
+     * private method prints the dead monsters names 
+     * and returns the count of dead monsters in the list
+     * @return int count - number of dead monsters in the monsters list
+     */
+    private int printDeadMonster(){
+     int count = 0;
+     for (int i=0;i<this.monsters.size();i++){
+      Monster m = this.monsters.get(i);
+      if (m.getHitpoints()==0){
+       print("Name["+i+"]  : "+m.getName());
+       count++;
+      }
+     }
+     return count;
+    }
+    
+    /**
+     * private method prints a visual representation of the weapons
+     * @param Weapon weapon - the weapon object to visually represent
+     */
     private void printWeapon(Weapon weapon){
-    	if (weapon.getName().contains("Sword") || weapon.getName().contains("Blade")){
-    		SceneGenerator.showSword();
-    	} else if (weapon.getName().contains("Bow")){
-    		SceneGenerator.showBow();
-    	} else {
-    		SceneGenerator.showAxe();
-    	}
+     if (weapon.getName().contains("Sword") || weapon.getName().contains("Blade")){
+      SceneGenerator.showSword();
+     } else if (weapon.getName().contains("Bow")){
+      SceneGenerator.showBow();
+     } else {
+      SceneGenerator.showAxe();
+     }
     }
 }

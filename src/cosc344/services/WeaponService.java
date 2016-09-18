@@ -8,7 +8,11 @@ import java.util.*;
 
 public class WeaponService {
     private Connection conn;
-
+    
+    /**
+     * 1-arg WeaponService constructor
+     * @param Connection connection to help with the database
+     */
     public WeaponService(Connection connection) throws SQLException {
         this.conn = connection;
     }
@@ -18,6 +22,7 @@ public class WeaponService {
      * using given Primary-Key as identifier. This method is just a convenience method
      * for the real load-method which accepts the valueObject as a parameter. Returned
      * valueObject will be created using the createValueObject() method.
+     * @return Weapon valueObject of the requested weapon from the id
      */
     public Weapon getObject(int id) throws NotFoundException, SQLException {
 
@@ -65,6 +70,7 @@ public class WeaponService {
      * This should only be used when target tables have only small amounts
      * of data.
      *
+     * @return ArrayList<Weapon> of Weapon objects from the query.
      */
     public ArrayList<Weapon> loadAll() throws SQLException {
 
@@ -74,7 +80,12 @@ public class WeaponService {
 
         return searchResults;
     }
-
+    
+    /**
+     * Loads all the weapons related to the hero by heroid
+     * @param int heroid - the heroid to load the weapons from
+     * @return ArrayList<Weapon> the list of weapons belonging to the heroid
+     */
     public ArrayList<Weapon> loadAllByHeroId(int heroid) throws SQLException {
 
         String sql = "SELECT * FROM weapon " +
@@ -252,6 +263,7 @@ public class WeaponService {
      * If table is empty, the return value is 0. This method should be used before calling
      * loadAll, to make sure table has not too many rows.
      *
+     * @return int allRows the number of rows affected by the query.
      */
     public int countAll() throws SQLException {
 
@@ -287,6 +299,7 @@ public class WeaponService {
      *
      * @param valueObject  This parameter contains the class instance where search will be based.
      *                     Primary-key field should not be set.
+     * @return ArrayList<Weapon> the list of Weapon objects matching the criteria of the query.
      */
     public ArrayList<Weapon> searchMatching(Weapon valueObject) throws SQLException {
 
@@ -355,6 +368,7 @@ public class WeaponService {
      * This method will also make sure that if cache is used, it will reset when data changes.
      *
      * @param stmt         This parameter contains the SQL statement to be excuted.
+     * @return int result  The number of rows affected by the update.
      */
     protected int databaseUpdate(PreparedStatement stmt) throws SQLException {
 
@@ -412,6 +426,7 @@ public class WeaponService {
      * to the List of valueObjects. If no rows were found, an empty List will be returned.
      *
      * @param stmt         This parameter contains the SQL statement to be excuted.
+     * @return ArrayList<Weapon> The list of Weapon objects from the query.
      */
     protected ArrayList<Weapon> listQuery(PreparedStatement stmt) throws SQLException {
 
@@ -448,6 +463,6 @@ public class WeaponService {
     }
     
     private int generateValue(){
-    	return (new java.util.Random()).nextInt((100 - 1) + 1) + 1;
+     return (new java.util.Random()).nextInt((100 - 1) + 1) + 1;
     }
 }
