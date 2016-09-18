@@ -11,7 +11,7 @@ public class AreaService {
     
     /**
      * 1-arg AreaService constructor
-     * @param Connection connection object to help with the database
+     * @param connection object to help with the database
      */
     public AreaService(Connection connection) throws SQLException {
         this.conn = connection;
@@ -23,7 +23,7 @@ public class AreaService {
      * for the real load-method which accepts the valueObject as a parameter. Returned
      * valueObject will be created using the createValueObject() method.
      * 
-     * @return Area valueObject The created valueObject of the Area name.
+     * @return valueObject The created valueObject of the Area name.
      */
     public Area getObject(String name) throws NotFoundException, SQLException {
 
@@ -75,7 +75,7 @@ public class AreaService {
      * This should only be used when target tables have only small amounts
      * of data.
      *
-     * @return ArrayList<Area> searchResults The list of Area objects returned by the query.
+     * @return searchResults The list of Area objects returned by the query.
      */
     public ArrayList<Area> loadAll() throws SQLException {
 
@@ -239,7 +239,7 @@ public class AreaService {
      * If table is empty, the return value is 0. This method should be used before calling
      * loadAll, to make sure table has not too many rows.
      *
-     * @return int allRows the count of rows that matches the query.
+     * @return allRows the count of rows that matches the query.
      */
     public int countAll() throws SQLException {
 
@@ -275,7 +275,7 @@ public class AreaService {
      *
      * @param valueObject  This parameter contains the class instance where search will be based.
      *                     Primary-key field should not be set.
-     * @return ArrayList<Area> The list of Area objects affected by the query with the matching criteria.
+     * @return searchResults The list of Area objects affected by the query with the matching criteria.
      */
     public ArrayList<Area> searchMatching(Area valueObject) throws SQLException {
 
@@ -320,7 +320,7 @@ public class AreaService {
      * This method will also make sure that if cache is used, it will reset when data changes.
      *
      * @param stmt         This parameter contains the SQL statement to be excuted.
-     * @return int result  The number of rows affected by the update.
+     * @return result      The number of rows affected by the update.
      */
     protected int databaseUpdate(PreparedStatement stmt) throws SQLException {
 
@@ -372,7 +372,7 @@ public class AreaService {
      * to the List of valueObjects. If no rows were found, an empty List will be returned.
      *
      * @param stmt         This parameter contains the SQL statement to be excuted.
-     * @return ArrayList<Area> The list of Area objects from the resulting query.
+     * @return searchResults The list of Area objects from the resulting query.
      */
     protected ArrayList<Area> listQuery(PreparedStatement stmt) throws SQLException {
 
